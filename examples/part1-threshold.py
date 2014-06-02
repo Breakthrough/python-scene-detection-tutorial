@@ -20,7 +20,9 @@
 # are printed to stdout. Note that this program depends on the Python
 # OpenCV bindings and NumPy.
 #
+#
 # Copyright (C) 2013-2014 Brandon Castellano <http://www.bcastell.com>.
+#
 # I hereby release this file into the public domain.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -68,16 +70,15 @@ def main():
     start_time = cv2.getTickCount()  # Used for benchmarking/statistics after loop.
 
     while True:
-        (rv, im) = cap.read()   # im is a valid image if and only if rv is true
-        if not rv:
+        # Get next frame from video.
+        (rv, im) = cap.read()
+        if not rv:   # im is a valid image if and only if rv is true
             break
 
-        # im.mean() and numpy.mean(im) run at roughly the same speed
-        #frame_mean = im.mean()
-        #frame_mean = np.mean(im)
-
-        # dividing np.sum(im) by the image size increases speed by ~35-40%
+        # Compute mean intensity of pixels in frame.
         frame_mean = np.sum(im) / float(im.shape[0] * im.shape[1] * im.shape[2])
+        # Dividing the sum by the image size is 35-40% faster than using 
+        # either im.mean() or np.mean(im).
 
         # Detect fade in from black.
         if frame_mean >= threshold and last_mean < threshold:
@@ -93,9 +94,9 @@ def main():
 
         last_mean = frame_mean      # Store current mean to compare in next iteration.
 
-    # get # of frames in video as position in video we ended at
+    # Get # of frames in video based on the position of the last frame we read.
     frame_count = cap.get(cv2.cv.CV_CAP_PROP_POS_FRAMES)
-    # compute runtime and average framerate
+    # Compute runtime and average framerate
     total_runtime = float(cv2.getTickCount() - start_time) / cv2.getTickFrequency()
     avg_framerate = float(frame_count) / total_runtime
 

@@ -8,18 +8,18 @@
 # algorithm using a set threshold compared to the average pixel intensity
 # of each frame. Usage:
 #
-#   > python part1-threshold.py [video-file] [intensity = 16]
+#   > python part1-threshold.py [video-file] [intensity = 15]
 #
 # Where [video-file] is a path to the video to be parsed, and [intensity]
 # is the average pixel intensity from 0 to 255 to be used as a cut-off
-# (if unspecified, the default value of 16 is used).  Example:
+# (if unspecified, the default value of 15 is used).  Example:
 #
 #   > python part1-threshold.py testvideo.mp4 8
 #
 # For each fade/cut that is detected, the timecodes and frame numbers
 # are printed to stdout. Note that this program depends on the Python
-# OpenCV bindings and NumPy.
-#
+# OpenCV bindings and NumPy. This software is a proof of concept related
+# to the tutorial above, so note many error checks are skipped for brevity.
 #
 # Copyright (C) 2013-2014 Brandon Castellano <http://www.bcastell.com>.
 #
@@ -42,6 +42,7 @@ import numpy as np
 def main():
     if len(sys.argv) < 2:
         print "Error - file name must be specified as first argument."
+        print "See the header of part1-threshold.py for usage details."
         return
     
     cap = cv2.VideoCapture()
@@ -60,11 +61,10 @@ def main():
     print "Video Resolution: %d x %d" % (width, height)
 
     # Allow the threshold to be passed as an optional, second argument to the script.
-    threshold = 16
+    threshold = 15
     if len(sys.argv) > 2 and int(sys.argv[2]) > 0:
         threshold = int(sys.argv[2])
     print "Detecting scenes with threshold = %d.\n" % threshold
-
 
     last_mean  = 0                   # Mean intensity of the *last* frame processed.
     start_time = cv2.getTickCount()  # Used for benchmarking/statistics after loop.

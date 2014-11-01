@@ -13,7 +13,7 @@ This repository contains the example programs, corresponding to the three-part t
  2. [Optimized/Adaptive Threshold Detection](http://www.bcastell.com/tech-articles/pyscenedetect-tutorial-part-2/)
  3. Content-Aware Scene Changes (coming soon!)
 
-All files in the `examples/` directory are released into the public domain.  In total, there are three programs (`part1-threshold.py`, `part2-adaptive.py`, and still under development, `part3-content-aware.py`) corresponding to the respective part in the tutorial linked above.  Usage details for each program can be found in the comment header for that file.
+You can get the latest sample code/video from [the releases page](https://github.com/Breakthrough/python-scene-detection-tutorial/releases).  All files in the `examples/` directory are released into the public domain.  In total, there are three programs (`part1-threshold.py`, `part2-adaptive.py`, and still under development, `part3-content-aware.py`) corresponding to the respective part in the tutorial linked above.  Usage details for each program can be found in the comment header for that file.
 
 
 ----------------------------------------------------------

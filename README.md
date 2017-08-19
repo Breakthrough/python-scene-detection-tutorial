@@ -6,6 +6,13 @@ By: [Brandon Castellano](http://www.bcastell.com)
 
 ----------------------------------------------------------
 
+ >
+ > **NOTE:  My website is currently undergoing construction (migrating to a Github-based solution), and thus the below links do not work (they will once the migration is completed).**
+ > 
+ > **In the meantime, you can view a cached version of the pages below using the [Internet Archive's Wayback Machine](https://archive.org/web/).**
+ >  
+ > 
+ 
 
 This repository contains the example programs, corresponding to the three-part tutorial on detecting scene changes in videos with Python and OpenCV, which can be found at:
 
